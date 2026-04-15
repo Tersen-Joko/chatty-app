@@ -2,27 +2,25 @@
 
 import { useAuth } from "@/contexts/auth-context"
 import { AppShell } from "@/components/chatty/app-shell"
-import { Feed } from "@/components/chatty/feed"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { LoginForm } from "@/components/chatty/login-form"
 
-export default function ChattyPage() {
-  const { user, loading } = useAuth()
-  const router = useRouter()
+export default function Home() {
+  const { user, isLoading } = useAuth()
 
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push("/auth/login")
-    }
-  }, [user, loading, router])
+  if (isLoading) {
+    return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+  }
 
-  if (loading || !user) {
-    return null
+  if (!user) {
+    return <LoginForm />
   }
 
   return (
-    <AppShell currentPage="feed">
-      <Feed />
+    <AppShell>
+      <div className="p-4">
+        <h1 className="text-2xl font-bold text-primary">Welcome to Chatty</h1>
+        {/* Your feed content goes here */}
+      </div>
     </AppShell>
   )
 }

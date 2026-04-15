@@ -1,7 +1,7 @@
 "use client"
 
 import { Inter, Outfit } from "next/font/google"
-import { AuthProvider } from "@/contexts/auth-context"
+import { AuthProvider } from "../contexts/auth-context"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })

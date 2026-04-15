@@ -1,4 +1,4 @@
-se client"
+"use client"
 
 import { useAuth } from "@/contexts/auth-context"
 import { AppShell } from "@/components/chatty/app-shell"
